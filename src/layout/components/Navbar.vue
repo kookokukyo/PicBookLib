@@ -6,14 +6,13 @@
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
-        <!-- <search id="header-search" class="right-menu-item" /> -->
+        <search id="header-search" class="right-menu-item" />
         <screenfull id="screenfull" class="right-menu-item hover-effect" />
       </template>
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <i class="el-icon-caret-bottom" />
+          <img src="/static/images/userhead.jpg" class="user-avatar">
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/profile/index">
@@ -24,6 +23,7 @@
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
+      
     </div>
   </div>
 </template>
@@ -122,13 +122,13 @@ export default {
       margin-right: 30px;
 
       .avatar-wrapper {
-        margin-top: 5px;
+        margin-top: 10px;
         position: relative;
 
         .user-avatar {
           cursor: pointer;
-          width: 40px;
-          height: 40px;
+          width: 30px;
+          height: 30px;
           border-radius: 10px;
         }
 
