@@ -5,34 +5,34 @@ import Layout from '@/layout'
 const nestedRouter = {
     path: '/bookmanage',
     component: Layout,
-    redirect: '/bookmanage/menu1',
-    name: '图书管理',
+    redirect: 'noRedirect',
+    name: 'bookmanage',
     meta: {
         title: '图书管理',
-        icon: 'nested'
+        icon: 'bookmanage'
     },
     children: [{
             path: 'borrow',
             component: () =>
                 import ('@/views/bookmanage/borrow/index'), // Parent router-view
-            name: '借书',
-            meta: { title: '借书' }
+            name: 'borrow',
+            meta: { title: '借阅图书' }
         }, {
             path: 'repay',
             component: () =>
                 import ('@/views/bookmanage/repay/index'), // Parent router-view
-            name: '还书',
-            meta: { title: '还书' }
+            name: 'repay',
+            meta: { title: '归还图书' }
         }, {
             path: 'stack',
             component: () =>
                 import ('@/views/bookmanage/stack/index'), // Parent router-view
-            name: '书库管理',
+            name: 'stack',
             meta: { title: '书库管理' }
         },
         {
             path: 'member',
-            name: '会员管理',
+            name: 'member',
             component: () =>
                 import ('@/views/bookmanage/member/index'),
             meta: { title: '会员管理' }
