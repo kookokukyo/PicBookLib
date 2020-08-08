@@ -8,7 +8,7 @@ Vue.use(Router)
 import Layout from '@/layout'
 
 /* Router Modules */
-// import nestedRouter from './modules/nested'
+import bookmanageRouter from './modules/bookmanage' //图书管理页面
 
 export const constantRoutes = [{
         path: '/redirect',
@@ -57,18 +57,6 @@ export const constantRoutes = [{
         }]
     },
     {
-        path: '/scancode',
-        component: Layout,
-        redirect: '/scancode/index',
-        children: [{
-            path: 'index',
-            component: () =>
-                import ('@/views/scancode/index'),
-            name: 'ScanCode',
-            meta: { title: '图书管理', icon: 'guide', noCache: true }
-        }]
-    },
-    {
         path: '/profile',
         component: Layout,
         redirect: '/profile/index',
@@ -77,7 +65,7 @@ export const constantRoutes = [{
             path: 'index',
             component: () =>
                 import ('@/views/profile/index'),
-            name: 'Profile',
+            name: '用户信息',
             meta: { title: '用户信息', icon: 'user', noCache: true }
         }]
     }
@@ -87,64 +75,21 @@ export const constantRoutes = [{
  * asyncRoutes
  * the routes that need to be dynamically loaded based on user roles
  */
-export const asyncRoutes = [{
-        path: '/permission',
-        component: Layout,
-        redirect: '/permission/page',
-        alwaysShow: true, // will always show the root menu
-        name: 'Permission',
-        meta: {
-            title: '权限管理',
-            icon: 'lock',
-            roles: ['admin', 'editor'] // you can set roles in root nav
-        },
-        children: [{
-                path: 'page',
-                component: () =>
-                    import ('@/views/permission/page'),
-                name: 'PagePermission',
-                meta: {
-                    title: 'Page Permission',
-                    roles: ['admin'] // or you can only set roles in sub nav
-                }
-            },
-            {
-                path: 'directive',
-                component: () =>
-                    import ('@/views/permission/directive'),
-                name: 'DirectivePermission',
-                meta: {
-                    title: 'Directive Permission'
-                        // if do not set roles, means: this page does not require permission
-                }
-            },
-            {
-                path: 'role',
-                component: () =>
-                    import ('@/views/permission/role'),
-                name: 'RolePermission',
-                meta: {
-                    title: 'Role Permission',
-                    roles: ['admin']
-                }
-            }
-        ]
-    },
-
+export const asyncRoutes = [
+    /** when your routing map is too long, you can split it into small modules **/
+    bookmanageRouter,
     {
-        path: '/icon',
+        path: '/scancode',
         component: Layout,
+        redirect: '/scancode/index',
         children: [{
             path: 'index',
             component: () =>
-                import ('@/views/icons/index'),
-            name: 'Icons',
-            meta: { title: 'Icons', icon: 'icon', noCache: true }
+                import ('@/views/scancode/index'),
+            name: 'ScanCode',
+            meta: { title: '扫码测试', icon: 'education', noCache: true }
         }]
     },
-
-    /** when your routing map is too long, you can split it into small modules **/
-    // nestedRouter,
 
     // 404 page must be placed at the end !!!
     { path: '*', redirect: '/404', hidden: true }

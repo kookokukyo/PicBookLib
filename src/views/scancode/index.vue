@@ -3,26 +3,33 @@
 <div class="app-container">
     <el-row :gutter="20">
         <el-col :span="24" :xs="24">
-          <el-card>
-            <activity :bookInfo="bookInfo" />
-          </el-card>
+            <el-card>
+                <activity :bookInfo="bookInfo" />
+                <Printer />
+            </el-card>
         </el-col>
 
-      </el-row>
+    </el-row>
 </div>
 </template>
 
 <script>
 import Activity from './components/Activity'
-import { scanCodeReq } from '@/api/scancode'
+import Printer from './components/Printer'
+import {
+    scanCodeReq
+} from '@/api/scancode'
 export default {
     name: 'ScanCode',
-     components: { Activity },
+    components: {
+        Activity,
+        Printer
+    },
     data() {
         return {
             keycode: null,
             start: null,
-            bookInfo:{}
+            bookInfo: {}
         }
     },
     mounted() {},
@@ -47,8 +54,8 @@ export default {
                     if (code.length < 3) return // 手动输入的时间不会让code的长度大于2，所以这里只会对扫码枪有
                     that.keycode = code
                     console.log('扫码结束')
-                    scanCodeReq(code).then(res=>{
-                      that.bookInfo = res.data
+                    scanCodeReq(code).then(res => {
+                        that.bookInfo = res.data
                     })
                     code = ''
                     lastCode = ''

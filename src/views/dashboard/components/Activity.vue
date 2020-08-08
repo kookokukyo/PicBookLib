@@ -56,27 +56,6 @@
         </li>
       </ul>
     </div>
-    <div class="post">
-      <div class="user-block">
-        <img class="img-circle" :src="'https://wpimg.wallstcn.com/fb57f689-e1ab-443c-af12-8d4066e202e2.jpg'+avatarPrefix">
-        <span class="username">Spider Man</span>
-        <span class="description">Posted 4 photos - 2 days ago</span>
-      </div>
-      <div class="user-images">
-        <el-carousel :interval="6000" type="card" height="220px">
-          <el-carousel-item v-for="item in carouselImages" :key="item">
-            <img :src="item+carouselPrefix" class="image">
-          </el-carousel-item>
-        </el-carousel>
-      </div>
-      <ul class="list-inline">
-        <li><span class="link-black text-sm"><i class="el-icon-share" /> Share</span></li>
-        <li>
-          <span class="link-black text-sm">
-            <svg-icon icon-class="like" /> Like</span>
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 
